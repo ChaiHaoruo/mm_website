@@ -155,51 +155,47 @@
     }
   </style>
 <script>
-    // JavaScript 用于获取当前日期并显示在页面上
     function updateDate() {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, '0'); // 月份从 0 开始，+1 是为了转换为正常的 1-12
-        const day = String(today.getDate()).padStart(2, '0');
+        const today = new Date(); // 获取当前日期
         
-        // 组合成 YYYY-MM-DD 格式
-        const currentDate = `${year}-${month}-${day}`;
-
         // 设置为昨天的日期
         const yesterday = new Date(today);
         yesterday.setDate(today.getDate() - 1);
 
-        const yyear = yesterday.getFullYear();
-        const ymonth = String(yesterday.getMonth() + 1).padStart(2, '0');
-        const yday = String(yesterday.getDate()).padStart(2, '0');
+        // 获取昨天的日期
+        const yearY = yesterday.getFullYear();
+        const monthY = String(yesterday.getMonth() + 1).padStart(2, '0');
+        const dayY = String(yesterday.getDate()).padStart(2, '0');
         
-        const yesterdayDate = `${yyear}-${ymonth}-${yday}`;
+        const yesterdayDate = `${yearY}-${monthY}-${dayY}`;
         
-        
-        // 更新申请时间的日期
-        document.getElementById("label_c6ddf7cb-5706-4839-80ad-3c108336bbf5").textContent = currentDate;
+        // 更新申请时间的日期为昨天
+        document.getElementById("label_c6ddf7cb-5706-4839-80ad-3c108336bbf5").textContent = yesterdayDate;
         document.getElementById("V0_CTRL1").value = Math.floor(yesterday.getTime() / 1000); // 以秒计的时间戳
 
-        // 更新入校时间的日期
-        document.getElementById("label_1457ab07-a65b-4c9f-9715-db0d4e49b9fb").textContent = currentDate;
+        // 更新其他入校时间的日期为今天
+        document.getElementById("label_4b84da13-0516-4454-9894-7a3d24bfbec9").textContent = yesterdayDate;
+        document.getElementById("V0_CTRL49").value = Math.floor(yesterday.getTime() / 1000); // 以秒计的时间戳
+
+        document.getElementById("label_253eddf5-ac18-45c8-8185-ac3292f0813f").textContent = yesterdayDate;
+        document.getElementById("V0_CTRL50").value = Math.floor(yesterday.getTime() / 1000); // 以秒计的时间戳
+
+        // 获取今天的日期
+        const yearT = today.getFullYear();
+        const monthT = String(today.getMonth() + 1).padStart(2, '0');
+        const dayT = String(today.getDate()).padStart(2, '0');
+
+        const todayDate = `${yearT}-${monthT}-${dayT}`;
+
+        // 更新入校时间的日期为今天
+        document.getElementById("label_1457ab07-a65b-4c9f-9715-db0d4e49b9fb").textContent = todayDate;
         document.getElementById("V0_CTRL47").value = Math.floor(today.getTime() / 1000); // 以秒计的时间戳
 
-        // 更新离校时间的日期
-        document.getElementById("label_f2848f8c-43e0-4641-8fe3-ae3ae32570b5").textContent = currentDate;
-        document.getElementById("V0_CTRL47").value = Math.floor(today.getTime() / 1000); // 以秒计的时间戳
-
-        // 更新入校时间的日期
-        document.getElementById("label_4b84da13-0516-4454-9894-7a3d24bfbec9").textContent = currentDate;
-        document.getElementById("V0_CTRL47").value = Math.floor(yesterday.getTime() / 1000); // 以秒计的时间戳
-
-        // 更新入校时间的日期
-        document.getElementById("label_253eddf5-ac18-45c8-8185-ac3292f0813f").textContent = currentDate;
-        document.getElementById("V0_CTRL47").value = Math.floor(yesterday.getTime() / 1000); // 以秒计的时间戳
-
-        
+        // 更新离校时间的日期为今天
+        document.getElementById("label_f2848f8c-43e0-4641-8fe3-ae3ae32570b5").textContent = todayDate;
+        document.getElementById("V0_CTRL48").value = Math.floor(today.getTime() / 1000); // 以秒计的时间戳
     }
 
-    // 当页面加载时，调用函数更新日期
     window.onload = updateDate;
 </script>
 <script type="text/javascript" src="./校外人员和车辆入校申请_files/lib.js.下载"></script>
